@@ -1,9 +1,9 @@
 import buildProperty from '../util/buildProperty';
-import { spacing } from '../util/propValue';
+import { exponential } from '../util/propValue';
 import { edgeNames } from '../util/propName';
 import { applyUnit } from '../util/unit';
 
-const compute = applyUnit('rem', spacing);
+const compute = applyUnit('rem', exponential(.25));
 
 const mods = Object.entries({
     ...edgeNames('margin'),

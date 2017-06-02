@@ -1,17 +1,17 @@
 import buildProperty from '../util/buildProperty';
 import { exponential } from '../util/propValue';
-import { edgeNames } from '../util/propName';
+import { cornerNames } from '../util/propName';
 import { applyUnit } from '../util/unit';
 
-const compute = applyUnit('rem', exponential(.25));
+const compute = applyUnit('rem', exponential(.125));
 
 const mods = Object.entries({
-    ...edgeNames('padding'),
+    ...cornerNames('border', 'radius'),
 }).reduce((mem, [mod, propNames]) => {
     mem[mod] = buildProperty(propNames, compute);
     return mem;
 }, {});
 
-const padding = buildProperty(['padding'], compute, mods);
+const borderRadius = buildProperty(['border-radius'], compute, mods);
 
-export default padding;
+export default borderRadius;

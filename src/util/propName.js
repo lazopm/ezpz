@@ -20,7 +20,7 @@ export const cornerNames = (name, append) => {
     };
     return Object.assign(names, { 
         top:    [...names.topLeft, ...names.topRight],
-        bottom: [...bottomLeft, ...names.bottomRight],
+        bottom: [...names.bottomLeft, ...names.bottomRight],
         left:   [...names.topLeft, ...names.bottomLeft],
         right:  [...names.topRight, ...names.bottomRight],
     });
