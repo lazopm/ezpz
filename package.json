@@ -7,6 +7,10 @@
     "build": "node scripts/build.js",
     "test": "jest --verbose"
   },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/lazopm/peitho"
+  },
   "author": "Pablo Lazo <lazopm@gmail.com> (lazopm.com)",
   "license": "ISC",
   "dependencies": {
