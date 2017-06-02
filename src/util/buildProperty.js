@@ -1,13 +1,10 @@
-import prefixer from './prefixer';
 import memoize from 'lodash.memoize';
 
-const buildDefinition = memoize((value, ...propNames) => {
-    const style = propNames.reduce((mem, name) => {
+const buildDefinition = memoize((value, ...propNames) =>
+    propNames.reduce((mem, name) => {
         mem[name] = value; 
         return mem;
     }, {});
-	return prefixer(style);
-});
 
 const GET_CONFIG = Symbol();
 const proxyMods = (mods, compute, def = {}) => {
