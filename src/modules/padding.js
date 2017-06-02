@@ -1,24 +1,17 @@
 import buildProperty from '../util/buildProperty';
+import { spacing } from '../util/propValue';
+import { edgeNames } from '../util/propName';
+import { applyUnit } from '../util/unit';
 
-const toValue = num => {
-    const val = num === 0 ? 0 : .25 * Math.pow(2, Math.abs(num-1))
-    return num < 0 ? val * -1 : val;
-}
+const compute = applyUnit('rem', spacing);
 
-const top        = buildProperty(['padding-top'], toValue);
-const bottom     = buildProperty(['padding-bottom'], toValue);
-const left       = buildProperty(['padding-left'], toValue);
-const right      = buildProperty(['padding-right'], toValue);
-const vertical   = buildProperty(['padding-top', 'padding-bottom'], toValue);
-const horizontal = buildProperty(['padding-left', 'padding-right'], toValue);
+const mods = Object.entries({
+    ...edgeNames('padding'),
+}).reduce((mem, [mod, propNames]) => {
+    mem[mod] = buildProperty(propNames, compute);
+    return mem;
+}, {});
 
-const padding = buildProperty(['padding'], toValue, {
-    top,
-    bottom,
-    left,
-    right,
-    vertical,
-    horizontal,
-});
+const padding = buildProperty(['padding'], compute, mods);
 
 export default padding;
