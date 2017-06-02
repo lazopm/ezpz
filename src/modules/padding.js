@@ -1,4 +1,4 @@
-import buildProperty from '../buildProperty';
+import buildProperty from '../util/buildProperty';
 
 const toValue = num => {
     const val = num === 0 ? 0 : .25 * Math.pow(2, Math.abs(num-1))
