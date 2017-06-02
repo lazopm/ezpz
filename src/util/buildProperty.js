@@ -4,7 +4,8 @@ const buildDefinition = memoize((value, ...propNames) =>
     propNames.reduce((mem, name) => {
         mem[name] = value; 
         return mem;
-    }, {});
+    }, {})
+);
 
 const GET_CONFIG = Symbol();
 const proxyMods = (mods, compute, def = {}) => {
