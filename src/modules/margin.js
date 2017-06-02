@@ -1,24 +1,17 @@
 import buildProperty from '../util/buildProperty';
+import { spacing } from '../util/propValue';
+import { edgeNames } from '../util/propName';
+import { applyUnit } from '../util/unit';
 
-const toValue = num => {
-    const val = num === 0 ? 0 : .25 * Math.pow(2, Math.abs(num-1))
-    return `${num < 0 ? val * -1 : val}rem`;
-}
+const compute = applyUnit('rem', spacing);
 
-const top        = buildProperty(['margin-top'], toValue);
-const bottom     = buildProperty(['margin-bottom'], toValue);
-const left       = buildProperty(['margin-left'], toValue);
-const right      = buildProperty(['margin-right'], toValue);
-const vertical   = buildProperty(['margin-top', 'margin-bottom'], toValue);
-const horizontal = buildProperty(['margin-left', 'margin-right'], toValue);
+const mods = Object.entries({
+    ...edgeNames('margin'),
+}).reduce((mem, [mod, propNames]) => {
+    mem[mod] = buildProperty(propNames, compute);
+    return mem;
+}, {});
 
-const margin = buildProperty(['margin'], toValue, {
-    top,
-    bottom,
-    left,
-    right,
-    vertical,
-    horizontal,
-});
+const margin = buildProperty(['margin'], compute, mods);
 
 export default margin;
