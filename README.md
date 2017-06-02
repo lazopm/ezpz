@@ -1,4 +1,6 @@
-# Peitho [![Build Status](https://travis-ci.org/lazopm/peitho.svg?branch=master)](https://travis-ci.org/lazopm/peitho)  
+# Peitho 
+[![npm version](https://badge.fury.io/js/peitho.svg)](https://badge.fury.io/js/peitho)
+[![Build Status](https://travis-ci.org/lazopm/peitho.svg?branch=master)](https://travis-ci.org/lazopm/peitho)  
 ezpz js inline styles :ok_hand:
 
 ### border
