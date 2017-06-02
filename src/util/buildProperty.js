@@ -1,12 +1,13 @@
 import prefixer from './prefixer';
+import memoize from 'lodash.memoize';
 
-const buildDefinition = (propNames, value) => {
+const buildDefinition = memoize((value, ...propNames) => {
     const style = propNames.reduce((mem, name) => {
         mem[name] = value; 
         return mem;
     }, {});
 	return prefixer(style);
-};
+});
 
 const GET_CONFIG = Symbol();
 const proxyMods = (mods, compute, def = {}) => {
@@ -16,12 +17,12 @@ const proxyMods = (mods, compute, def = {}) => {
 				const [propNames, modCompute = compute] = mods[prop][GET_CONFIG];
 				if (typeof compute === 'function') {
 					return (...args) => {
-						const newDef = buildDefinition(propNames, modCompute(...args));
+						const newDef = buildDefinition(modCompute(...args), ...propNames);
 						Object.assign(target, newDef); 
 						return receiver;
 					}
                 }
-				const newDef = buildDefinition(propNames, modCompute);
+				const newDef = buildDefinition(modCompute, ...propNames);
 				Object.assign(target, newDef); 
 				return receiver
 				
@@ -35,7 +36,7 @@ const proxyMods = (mods, compute, def = {}) => {
 
 const buildProperty = (propNames, compute, mods = {}) => new Proxy(new Function(), {
     apply: (target, _, args) => {
-        const initialDef = buildDefinition(propNames, compute(...args));
+        const initialDef = buildDefinition(compute(...args), ...propNames);
         return proxyMods(mods, compute, initialDef);
     },
     get: (target, prop) => {
