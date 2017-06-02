@@ -1,4 +1,6 @@
-# peitho
+# Peitho
+[![Build Status](https://travis-ci.org/lazopm/peitho.svg?branch=master)](https://travis-ci.org/lazopm/peitho)
+ezpz js inline styles :ok_hand:
 ### border
 `border.bottom(2).color(red)`
 ```css
@@ -6,7 +8,7 @@ border-bottom-width: .25rem;
 border-color: red;
 ```
 
-`border.bottom(2, 'solid', red)`
+`border.bottom(2).colorBottom('red')`
 ```css
 border-bottom-width: .25rem;
 border-bottom-style: solid;
