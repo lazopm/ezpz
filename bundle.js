@@ -763,9 +763,17 @@ const mods$1 = Object.entries(_extends({}, edgeNames('margin'))).reduce((mem, [m
 
 const margin = buildProperty(['margin'], compute$1, mods$1);
 
-const mods$2 = {
-    flex: buildProperty(['display'], 'flex')
+const valueMap = {
+    block: 'block',
+    flex: 'flex',
+    inlineBlock: 'inline-block'
 };
+
+const mods$2 = Object.entries(valueMap).reduce((mem, [mod, value]) => {
+    mem[mod] = buildProperty(['display'], value);
+    return mem;
+}, {});
+
 const display = buildProperty(['display'], null, mods$2);
 
 const compute$2 = applyUnit('rem', exponential(.125));
