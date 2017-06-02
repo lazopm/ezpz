@@ -1,15 +1,17 @@
 {
-    "presets": [
-        ["env", {
-            "targets": {
-                "node": "current" 
-            },
-            "modules": false,
-        }],
-        "stage-3",
-    ],
-    "plugins": ["external-helpers"],
     "env": {
+        "development": {
+            "presets": [
+                ["env", {
+                    "targets": {
+                        "node": "current" 
+                    },
+                        "modules": false,
+                }],
+                "stage-3",
+            ],
+            "plugins": ["external-helpers"]
+        },
         "test": {
             "presets": [
                 ["env", {
@@ -19,7 +21,6 @@
                 }],
                 "stage-3",
             ]
-        },
-        "plugins": []
+        }
     }
 }
