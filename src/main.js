@@ -1,5 +1,7 @@
 import padding from './modules/padding';
+import margin from './modules/margin';
 
-const a = padding('999px').top(0).bottom(2).top(2);
-
-console.log(a);
+export {
+    padding,
+    margin
+};
