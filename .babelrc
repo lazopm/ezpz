@@ -1,12 +1,26 @@
 {
-  "presets": [
-    ["env", {
-      "targets": {
-        "node": "current" 
-      },
-      "modules": false,
-    }],
-    "stage-3",
-  ],
-  "plugins": ["external-helpers"]
+    "env": {
+        "dev": {
+            "presets": [
+                ["env", {
+                    "targets": {
+                        "node": "current" 
+                    },
+                        "modules": false,
+                }],
+                "stage-3",
+            ],
+            "plugins": ["external-helpers"]
+        },
+        "test": {
+            "presets": [
+                ["env", {
+                    "targets": {
+                        "node": "current" 
+                    }
+                }],
+                "stage-3",
+            ]
+        }
+    }
 }
