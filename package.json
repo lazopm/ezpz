@@ -1,6 +1,6 @@
 {
   "name": "peitho",
-  "version": "0.0.2",
+  "version": "0.0.3",
   "description": "stylesheet helper for aphrodite",
   "main": "build/bundle.js",
   "scripts": {
