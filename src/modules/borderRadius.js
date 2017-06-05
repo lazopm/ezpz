@@ -1,6 +1,6 @@
 import buildProperty from '../util/buildProperty';
-import { exponential } from '../util/propValue';
-import { cornerNames } from '../util/propName';
+import { exponential } from '../util/value';
+import { cornerNames } from '../util/name';
 import { applyUnit } from '../util/unit';
 
 const compute = applyUnit('rem', exponential(.125));

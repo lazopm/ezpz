@@ -1,9 +1,11 @@
 import buildProperty from '../util/buildProperty';
-import { exponential } from '../util/propValue';
-import { edgeNames } from '../util/propName';
+import { exponential } from '../util/value';
+import { edgeNames } from '../util/name';
 import { applyUnit } from '../util/unit';
 
-const compute = applyUnit('rem', exponential(.25));
+const value = exponential(.25);
+const compute = input =>
+    typeof input === 'string' ? input : applyUnit('rem', value(input));
 
 const mods = Object.entries({
     ...edgeNames('margin'),

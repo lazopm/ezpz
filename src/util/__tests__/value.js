@@ -1,7 +1,7 @@
-import { exponential } from '../propValue';
+import { exponential } from '../value';
 
 describe('exponential', () => {
-    const base2 = exponential(1);
+    const base2 = exponential(1, 2);
     const base3 = exponential(1, 3);
 
     test('0 should be 0', () => {

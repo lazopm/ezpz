@@ -1,7 +1,1 @@
-export const applyUnit = (unit, computeValue) => input => {
-    if (typeof input === 'string') {
-        return input;
-    }
-    const value = computeValue(input);
-    return value ? `${value}${unit}` : 0;
-};
+export const applyUnit = (unit, value) => value ? `${value}${unit}` : 0;

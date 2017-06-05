@@ -1,4 +1,4 @@
-import { edgeNames, cornerNames } from '../propName';
+import { edgeNames, cornerNames } from '../name';
 
 describe('edge property names', () => {
     const {
