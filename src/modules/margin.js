@@ -3,7 +3,7 @@ import { exponential } from '../util/value';
 import { edgeNames } from '../util/name';
 import { applyUnit } from '../util/unit';
 
-const value = exponential(.25);
+const value = exponential(.25, 2);
 const compute = input =>
     typeof input === 'string' ? input : applyUnit('rem', value(input));
 
