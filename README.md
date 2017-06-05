@@ -2,10 +2,11 @@
 
 [![npm version](https://badge.fury.io/js/peitho.svg)](https://badge.fury.io/js/peitho)
 
-[![Build Status](https://travis-ci.org/lazopm/peitho.svg?branch=master)](https://travis-ci.org/lazopm/peitho)  
-ezpz js inline styles :ok_hand:
+[![Build Status](https://travis-ci.org/lazopm/peitho.svg?branch=master)](https://travis-ci.org/lazopm/peitho)
 
-[![Coverage Status](https://coveralls.io/repos/github/lazopm/peitho/badge.svg?branch=master)](https://coveralls.io/github/lazopm/peitho?branch=master)
+[![Coverage Status](https://coveralls.io/repos/github/lazopm/peitho/badge.svg?branch=master)](https://coveralls.io/github/lazopm/peitho?branch=master)  
+
+ezpz js inline styles :ok_hand:
 
 ### border
 `border.bottom(2).color(red)`
