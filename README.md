@@ -5,27 +5,21 @@
 
 ezpz js inline styles :ok_hand:
 
-### border
-`border.bottom(2).color(red)`
+very early wip do not use this
+
+### padding
+`padding(1)`
 ```css
-border-bottom-width: .25rem;
-border-color: red;
+padding: .25rem;
 ```
 
-`border.bottom(2).colorBottom('red')`
+`padding(1).vertical(0)`
 ```css
-border-bottom-width: .25rem;
-border-bottom-style: solid;
-border-bottom-color: red;
+padding-top: 0;
+padding-bottom: 0;
+padding-left: .25rem;
+padding-right: .25rem;
 ```
-
-`border(2).vertical(null, null, red)`
-```css
-border-width: .25rem;
-border-bottom-color: red;
-border-top-color: red;
-```
-
 ### borderRadius
 `borderRadius(1)`
 ```css
