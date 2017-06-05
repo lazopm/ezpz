@@ -29,9 +29,14 @@
     "uglify-es": "^3.0.15"
   },
   "jest": {
-      "verbose": true,
-      "collectCoverage": true,
-      "collectCoverageFrom": ["src/**/*.js"],
-      "coveragePathIgnorePatterns": ["src/main.js"]
-  }
+    "verbose": true,
+    "collectCoverage": true,
+    "collectCoverageFrom": [
+      "src/**/*.js"
+    ],
+    "coveragePathIgnorePatterns": [
+      "src/main.js"
+    ]
+  },
+  "dependencies": {}
 }
