@@ -5,7 +5,7 @@
   "main": "build/bundle.js",
   "scripts": {
     "build": "node scripts/build.js",
-    "test": "jest --verbose --coverage",
+    "test": "jest",
     "coveralls": "cat ./coverage/lcov.info | ./node_modules/coveralls/bin/coveralls.js"
   },
   "repository": {
@@ -27,5 +27,11 @@
     "rollup-plugin-node-resolve": "^3.0.0",
     "rollup-plugin-uglify": "^2.0.1",
     "uglify-es": "^3.0.15"
+  },
+  "jest": {
+      "verbose": true,
+      "collectCoverage": true,
+      "collectCoverageFrom": ["src/**/*.js"],
+      "coveragePathIgnorePatterns": ["src/main.js"]
   }
 }
