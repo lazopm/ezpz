@@ -20,10 +20,11 @@ very early wip do not use this
 - [ ] add hooks for middleware stuff like browser affixing etc
 
 ## Modules
-all modules come with a default value scale, most are  units are rem
-if you pass in a number it will use the scale, if you pass in a string it will use it as value
-`padding(2) => padding: .5rem`
-`padding('123px') => padding 123px`
+all modules come with a default value scale, rem is the preferred unit 
+
+if you pass in a number it will compute from the scale, if you pass in a string it will use it as-is:
+`padding(2)       => padding: .5rem`
+`padding('123px') => padding: 123px`
 
 ### padding
 `padding(1)`
