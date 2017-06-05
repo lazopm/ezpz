@@ -7,6 +7,24 @@ ezpz js inline styles :ok_hand:
 
 very early wip do not use this
 
+## Roadmap
+- [x] buildProperty function
+- [x] create some sample easy modules
+- [x] set up CI, tests, coverage 
+- [ ] catch up on unit tests 
+- [ ] implement a good way to deal with more complex properties like border 
+- [ ] implement a way to override default value and unit computation
+- [ ] create modules for all common css properties
+- [ ] optimize computation with memoization
+- [ ] expose api in a good way so people can create custom properties
+- [ ] add hooks for middleware stuff like browser affixing etc
+
+## Modules
+all modules come with a default value scale, most are  units are rem
+if you pass in a number it will use the scale, if you pass in a string it will use it as value
+`padding(2) => padding: .5rem`
+`padding('123px') => padding 123px`
+
 ### padding
 `padding(1)`
 ```css
