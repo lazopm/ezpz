@@ -1,50 +1,33 @@
-const buildDefinition = (value, ...propNames) => propNames.reduce((mem, name) => {
+const definition = (value, ...propNames) => propNames.reduce((mem, name) => {
     mem[name] = value; 
     return mem;
 }, {})
 
 const GET_CONFIG = Symbol();
-const proxyMods = (mods, computeFallback, def = {}) => {
+const proxyMods = (mods, def = {}) => {
     return new Proxy(def, {
         get: (target, prop, receiver) => {
             if (prop in mods) {
-				const [propNames, compute] = mods[prop][GET_CONFIG];
-                const modCompute = compute || computeFallback;
-				if (typeof modCompute === 'function') {
+                const [props, compute] = mods[prop];
+				if (typeof compute === 'function') {
 					return (...args) => {
-						const newDef = buildDefinition(modCompute(...args), ...propNames);
-						Object.assign(target, newDef); 
+						Object.assign(target, definition(compute(...args), ...props));
 						return receiver;
 					}
                 }
-				const newDef = buildDefinition(modCompute, ...propNames);
-				Object.assign(target, newDef); 
+				Object.assign(target, definition(compute, ...props));
 				return receiver
-				
             }
-            else {
-                return target[prop];
-            }
+            return target[prop];
         },
     });
 };
 
-const buildProperty = (propNames, compute, mods = {}) => 
-    typeof compute === 'function' ?
-        new Proxy(compute, {
-            apply: (target, _, args) =>
-                proxyMods(mods, compute, buildDefinition(compute(...args), ...propNames)),
-            get: (target, prop) => {
-                if (prop === GET_CONFIG) {
-                    return [propNames, compute];
-                }
-                else if (prop in mods) {
-                    console.log('prop', prop);
-                    return proxyMods(mods, compute)[prop];
-                }
-                return target[prop];
-            }
-        })
-    : proxyMods(mods, compute, buildDefinition(compute, ...propNames));
-
+const buildProperty = (propNames, compute, mods = {}) => new Proxy(new Function(), {
+    apply: (target, _, args) => {
+        const def = definition(compute(...args), ...propNames);
+        return proxyMods(mods, def);
+    },
+    get: (target, prop) => proxyMods(mods)[prop]
+})
 export default buildProperty;

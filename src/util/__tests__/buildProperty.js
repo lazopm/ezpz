@@ -24,9 +24,8 @@ describe('no mods', () => {
 });
 describe('with mods', () => {
     const prop = buildProperty(['a'], compute, {
-        b: buildProperty(['b'], OUTPUT),
-        c: buildProperty(['c'], modCompute),
-        d: buildProperty(['d']),
+        mb: [['b'], OUTPUT],
+        mc: [['c'], modCompute],
     });
     test('calls the compute function', () => {
         prop(INPUT);
@@ -35,23 +34,18 @@ describe('with mods', () => {
     test('returns the right output', () => {
         expect(prop(INPUT)).toHaveProperty('a', OUTPUT);
     });
-    test.only('mods inherit compute', () => {
-        console.log(prop.d);
-        prop.d(INPUT);
-        expect(compute).toHaveBeenCalledWith(INPUT);
-    });
     test('mods call their compute function', () => {
-        prop.c(INPUT);
+        prop.mc(INPUT);
         expect(modCompute).toHaveBeenCalledWith(INPUT);
     });
     test('mod returns the right output', () => {
-        expect(prop.c(INPUT)).toHaveProperty('c', OUTPUT);
+        expect(prop.mc()).toHaveProperty('c', OUTPUT);
     });
     test('mods accept value as compute', () => {
-        expect(prop.b).toHaveProperty('b', OUTPUT);
+        expect(prop.mb).toHaveProperty('b', OUTPUT);
     });
     test('mods can be chained', () => {
-        const result = prop().b.c().d();
+        const result = prop().mb.mc();
         expect(result).toHaveProperty('a', OUTPUT);
         expect(result).toHaveProperty('b', OUTPUT);
         expect(result).toHaveProperty('c', OUTPUT);
