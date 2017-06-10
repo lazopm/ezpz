@@ -1,19 +1,16 @@
-import memoize from 'lodash.memoize';
-
-const buildDefinition = memoize((value, ...propNames) =>
-    propNames.reduce((mem, name) => {
-        mem[name] = value; 
-        return mem;
-    }, {})
-);
+const buildDefinition = (value, ...propNames) => propNames.reduce((mem, name) => {
+    mem[name] = value; 
+    return mem;
+}, {})
 
 const GET_CONFIG = Symbol();
-const proxyMods = (mods, compute, def = {}) => {
+const proxyMods = (mods, computeFallback, def = {}) => {
     return new Proxy(def, {
         get: (target, prop, receiver) => {
             if (prop in mods) {
-				const [propNames, modCompute = compute] = mods[prop][GET_CONFIG];
-				if (typeof compute === 'function') {
+				const [propNames, compute] = mods[prop][GET_CONFIG];
+                const modCompute = compute || computeFallback;
+				if (typeof modCompute === 'function') {
 					return (...args) => {
 						const newDef = buildDefinition(modCompute(...args), ...propNames);
 						Object.assign(target, newDef); 
@@ -31,15 +28,23 @@ const proxyMods = (mods, compute, def = {}) => {
         },
     });
 };
-const buildProperty = (propNames, compute, mods = {}) => new Proxy(new Function(), {
-    apply: (target, _, args) =>
-        proxyMods(mods, compute, buildDefinition(compute(...args), ...propNames)),
-    get: (target, prop) =>
-        prop === GET_CONFIG ?
-            [propNames, compute]
-        : prop in mods ?
-            proxyMods(mods, compute)[prop]
-        : target[prop]
-});
+
+const buildProperty = (propNames, compute, mods = {}) => 
+    typeof compute === 'function' ?
+        new Proxy(compute, {
+            apply: (target, _, args) =>
+                proxyMods(mods, compute, buildDefinition(compute(...args), ...propNames)),
+            get: (target, prop) => {
+                if (prop === GET_CONFIG) {
+                    return [propNames, compute];
+                }
+                else if (prop in mods) {
+                    console.log('prop', prop);
+                    return proxyMods(mods, compute)[prop];
+                }
+                return target[prop];
+            }
+        })
+    : proxyMods(mods, compute, buildDefinition(compute, ...propNames));
 
 export default buildProperty;
