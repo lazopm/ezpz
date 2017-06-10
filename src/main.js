@@ -1,7 +1,7 @@
-import padding from './modules/padding';
-import margin from './modules/margin';
-import display from './modules/display';
-import borderRadius from './modules/borderRadius';
+import { property as padding } from './modules/padding';
+import { property as margin } from './modules/margin';
+import { property as display } from './modules/display';
+import { property as borderRadius } from './modules/borderRadius';
 
 export {
     borderRadius,
