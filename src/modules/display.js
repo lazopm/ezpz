@@ -1,16 +1,14 @@
 import buildProperty from '../util/buildProperty';
 
-const valueMap = {
+export const valueMap = {
     block: 'block', 
     flex: 'flex',
     inlineBlock: 'inline-block',
 };
 
 const mods = Object.entries(valueMap).reduce((mem, [mod, value]) => {
-    mem[mod] = buildProperty(['display'], value);
+    mem[mod] = [['display'], value]
     return mem;
 }, {});
 
-const display = buildProperty(['display'], null, mods);
-
-export default display;
+export const property = buildProperty(['display'], null, mods);

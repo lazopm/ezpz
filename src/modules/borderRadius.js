@@ -3,15 +3,15 @@ import { exponential } from '../util/value';
 import { cornerNames } from '../util/name';
 import { applyUnit } from '../util/unit';
 
-const compute = applyUnit('rem', exponential(.125, 2));
+const value = exponential(.125, 2);
+export const compute = input =>
+    typeof input === 'string' ? input : applyUnit('rem', value(input));
 
 const mods = Object.entries({
     ...cornerNames('border', 'radius'),
 }).reduce((mem, [mod, propNames]) => {
-    mem[mod] = buildProperty(propNames, compute);
+    mem[mod] = [propNames, compute];
     return mem;
 }, {});
 
-const borderRadius = buildProperty(['border-radius'], compute, mods);
-
-export default borderRadius;
+export const property = buildProperty(['border-radius'], compute, mods);
