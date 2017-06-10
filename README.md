@@ -8,10 +8,6 @@ ezpz js inline styles :ok_hand:
 very early wip do not use this
 
 ## Roadmap
-- [x] buildProperty function
-- [x] create some sample easy modules
-- [x] set up CI, tests, coverage 
-- [ ] catch up on unit tests 
 - [ ] implement a good way to deal with more complex properties like border 
 - [ ] implement a way to override default value and unit computation
 - [ ] create modules for all common css properties
