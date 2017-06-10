@@ -31,21 +31,15 @@ const proxyMods = (mods, compute, def = {}) => {
         },
     });
 };
-
 const buildProperty = (propNames, compute, mods = {}) => new Proxy(new Function(), {
-    apply: (target, _, args) => {
-        const initialDef = buildDefinition(compute(...args), ...propNames);
-        return proxyMods(mods, compute, initialDef);
-    },
-    get: (target, prop) => {
-        if (prop === GET_CONFIG) {
-            return [propNames, compute]
-        }
-        else if (prop in mods) {
-            return proxyMods(mods, compute)[prop];
-        }
-        return target[prop];
-    },
+    apply: (target, _, args) =>
+        proxyMods(mods, compute, buildDefinition(compute(...args), ...propNames)),
+    get: (target, prop) =>
+        prop === GET_CONFIG ?
+            [propNames, compute]
+        : prop in mods ?
+            proxyMods(mods, compute)[prop]
+        : target[prop]
 });
 
 export default buildProperty;

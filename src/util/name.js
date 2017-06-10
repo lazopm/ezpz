@@ -1,23 +1,27 @@
-export const edgeNames = name => {
-    const names = {
-        top: [`${name}-top`],
-        bottom: [`${name}-bottom`],
-        left: [`${name}-left`],
-        right: [`${name}-right`],
-    };
+const join = (...args) => args.filter(x => x).join('-');
+const camelCase = str => str.split('-').map((s, i) =>
+    i === 0 ? s : s[0].toUpperCase() + s.slice(1)
+).join('');
+
+const edges = ['top', 'bottom', 'left', 'right'];
+
+export const edgeNames = (prop, append) => {
+    const names = edges.reduce((mem, edge) => {
+        mem[edge] = [join(prop, edge)];
+        return mem;
+    }, {});
     return Object.assign(names, {
-        vertical: [...names.top, ...names.bottom],
+        vertical:   [...names.top, ...names.bottom],
         horizontal: [...names.left, ...names.right],
     });
 };
 
-export const cornerNames = (name, append) => {
-    const names = { 
-        topLeft: [`${name}-top-left-${append}`],
-        topRight: [`${name}-top-right-${append}`],
-        bottomLeft: [`${name}-bottom-left-${append}`],
-        bottomRight: [`${name}-bottom-right-${append}`],
-    };
+const corners = ['top-left', 'top-right', 'bottom-left', 'bottom-right'];
+export const cornerNames = (prop, append) => {
+    const names = corners.reduce((mem, corner) => {
+        mem[camelCase(corner)] = [join(prop, corner, append)];
+        return mem;
+    }, {});
     return Object.assign(names, { 
         top:    [...names.topLeft, ...names.topRight],
         bottom: [...names.bottomLeft, ...names.bottomRight],
