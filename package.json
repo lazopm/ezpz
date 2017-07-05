@@ -1,7 +1,7 @@
 {
-  "name": "peitho",
-  "version": "0.0.4",
-  "description": "stylesheet helper for aphrodite",
+  "name": "ezpz",
+  "version": "1.0.0",
+  "description": "stylesheet helper",
   "main": "build/bundle.js",
   "scripts": {
     "build": "node scripts/build.js",
