@@ -5,7 +5,7 @@
 
 ezpz js inline styles :ok_hand:
 
-very early wip do not use this
+# dead - stopped developing, using styled-components
 
 ## Roadmap
 - [ ] implement a good way to deal with more complex properties like border 
