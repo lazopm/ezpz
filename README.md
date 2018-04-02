@@ -4,16 +4,8 @@
 [![Coverage Status](https://coveralls.io/repos/github/lazopm/ezpz/badge.svg?branch=master)](https://coveralls.io/github/lazopm/ezpz?branch=master)  
 
 ezpz js inline styles :ok_hand:
-
-# dead - stopped developing, using styled-components
-
-## Roadmap
-- [ ] implement a good way to deal with more complex properties like border 
-- [ ] implement a way to override default value and unit computation
-- [ ] create modules for all common css properties
-- [ ] memoize and optimize computation functions
-- [ ] expose api in a good way so people can create custom properties
-- [ ] add hooks for middleware stuff like browser affixing, using with other libraries, etc
+I started working on this to learn how to release an npm package.
+I'm no longer developing this, as I realized this adds unnecessary complexity to small projects, and is not flexible enough for bigger ones.
 
 ## Modules
 all modules come with a default value scale, rem is the preferred unit 
