@@ -38,11 +38,3 @@ border-radius: .125rem;
 border-radius: .125rem;
 border-radius-top-left: 0;
 ```
-
-### font
-`font(1).italic.family('arial')`
-```
-font-size: 1rem;
-font-style: italic;
-font-family: 'arial';
-```
