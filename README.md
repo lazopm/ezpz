@@ -3,8 +3,8 @@
 [![Build Status](https://travis-ci.org/lazopm/ezpz.svg?branch=master)](https://travis-ci.org/lazopm/ezpz)
 [![Coverage Status](https://coveralls.io/repos/github/lazopm/ezpz/badge.svg?branch=master)](https://coveralls.io/github/lazopm/ezpz?branch=master)  
 
-ezpz js inline styles :ok_hand:
-I started working on this to learn how to release an npm package.
+ezpz js inline styles.  
+I started working on this to learn how to release an npm package.  
 I'm no longer developing this, as I realized this adds unnecessary complexity to small projects, and is not flexible enough for bigger ones.
 
 ## Modules
