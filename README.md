@@ -24,7 +24,7 @@ padding: .25rem;
 padding-left: .25rem;
 padding-right: .25rem;
 ```
-### borderRadius
+
 `borderRadius(1)`
 ```
 border-radius: .125rem;
