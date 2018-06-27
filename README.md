@@ -1,7 +1,4 @@
 # ezpz
-[![npm version](https://badge.fury.io/js/ezpz.svg)](https://badge.fury.io/js/ezpz)
-[![Build Status](https://travis-ci.org/lazopm/ezpz.svg?branch=master)](https://travis-ci.org/lazopm/ezpz)
-[![Coverage Status](https://coveralls.io/repos/github/lazopm/ezpz/badge.svg?branch=master)](https://coveralls.io/github/lazopm/ezpz?branch=master)  
 
 ezpz js inline styles.  
 I started working on this to learn how to release an npm package.  
