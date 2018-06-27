@@ -1,6 +1,5 @@
 # ezpz
 
-ezpz js inline styles.  
 I started working on this to learn how to release an npm package.  
 I'm no longer developing this, as I realized this adds unnecessary complexity to small projects, and is not flexible enough for bigger ones.
 
