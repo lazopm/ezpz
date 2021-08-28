@@ -7,7 +7,7 @@ describe('applyUnit', () => {
     test('negative numbers', () => {
         expect(applyUnit('rem', -2.2)).toBe('-2.2rem')
     });
-    test('0', () => {
+    test('check if applyUnit returns 0 given rem as unit and 0 as value', () => {
         expect(applyUnit('rem', 0)).toBe(0)
     });
 });
